@@ -2,6 +2,8 @@ package com.springboot.fresher.repository;
 
 import com.springboot.fresher.entity.user.UserEntity;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -64,4 +66,9 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpec
      */
     @Query(value = "SELECT COUNT(id) FROM users", nativeQuery = true)
     long getTotalUser();
+
+    /**
+     * Pageable
+     */
+    Page<UserEntity> findByUserName(String userName, Pageable pageable);
 }
