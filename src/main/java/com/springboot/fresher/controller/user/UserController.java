@@ -2,6 +2,7 @@ package com.springboot.fresher.controller.user;
 
 import com.springboot.fresher.entity.user.UserEntity;
 import com.springboot.fresher.service.UserService;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,10 +29,10 @@ public class UserController {
     }
 
     @GetMapping("/getAll")
-    public Page<UserEntity> getAll(@RequestParam Integer page,
-                                   @RequestParam Integer size,
-                                   @RequestParam(defaultValue = "id") String sort,
-                                   @RequestParam(defaultValue = "desc") String direction) {
+    public Page<@NonNull UserEntity> getAll(@RequestParam Integer page,
+                                            @RequestParam Integer size,
+                                            @RequestParam(defaultValue = "id") String sort,
+                                            @RequestParam(defaultValue = "desc") String direction) {
         Sort.Direction sortDirection = direction.equalsIgnoreCase("asc")
                 ? Sort.Direction.ASC : Sort.Direction.DESC;
         Sort sortBy = Sort.by(sortDirection, sort);
@@ -40,11 +41,11 @@ public class UserController {
     }
 
     @GetMapping("/searchPage")
-    public Page<UserEntity> searchPageUser(@RequestParam Integer page,
-                                           @RequestParam Integer size,
-                                           @RequestParam(defaultValue = "id") String sort,
-                                           @RequestParam(defaultValue = "desc") String direction,
-                                           @RequestParam String userName) {
+    public Page<@NonNull UserEntity> searchPageUser(@RequestParam Integer page,
+                                                    @RequestParam Integer size,
+                                                    @RequestParam(defaultValue = "id") String sort,
+                                                    @RequestParam(defaultValue = "desc") String direction,
+                                                    @RequestParam String userName) {
         Sort.Direction sortDirection = direction.equalsIgnoreCase("asc")
                 ? Sort.Direction.ASC : Sort.Direction.DESC;
         Sort sortBy = Sort.by(sortDirection, sort);

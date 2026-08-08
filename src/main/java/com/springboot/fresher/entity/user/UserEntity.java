@@ -1,7 +1,10 @@
 package com.springboot.fresher.entity.user;
 
+import com.springboot.fresher.entity.feed.FeedEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +20,7 @@ public class UserEntity {
 
     @Column(columnDefinition = "varchar(255) comment 'user email'", nullable = false, unique = true)
     private String userEmail;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FeedEntity> feedList;
 }

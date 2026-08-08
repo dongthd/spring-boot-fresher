@@ -1,11 +1,11 @@
 package com.springboot.fresher.repository;
 
-import com.springboot.fresher.entity.OrderEntity;
+import com.springboot.fresher.entity.feed.FeedEntity;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends JpaRepository<@NonNull OrderEntity, @NonNull Long> {
+public interface FeedRepository extends JpaRepository<@NonNull FeedEntity, @NonNull Long> {
 
 }

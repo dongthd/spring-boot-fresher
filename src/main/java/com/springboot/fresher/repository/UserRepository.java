@@ -2,6 +2,7 @@ package com.springboot.fresher.repository;
 
 import com.springboot.fresher.entity.user.UserEntity;
 import jakarta.transaction.Transactional;
+import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpecificationExecutor<UserEntity> {
+public interface UserRepository extends JpaRepository<@NonNull UserEntity, @NonNull Long>,
+        JpaSpecificationExecutor<@NonNull UserEntity> {
 
     /**
      * find userName and userEmail
@@ -70,5 +72,5 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpec
     /**
      * Pageable
      */
-    Page<UserEntity> findByUserName(String userName, Pageable pageable);
+    Page<@NonNull UserEntity> findByUserName(String userName, Pageable pageable);
 }
